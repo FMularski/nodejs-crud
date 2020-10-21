@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    <main>
+        <section class="jumbotron">
+            <form action="/users", method="POST">
+                <label for="login">Login:</label>
+                <input type="text" name="login" id="login" required/><br/>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required/><br/>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required/><br/>
+
+                <button type="submit">Add</button>
+
+            </form>
+        </section>
+    </main>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+</body>
+</html>

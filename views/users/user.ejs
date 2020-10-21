@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    <main>
+        <section class="jumbotron">
+            <h1><%= user.login %></h1>
+            <h2><%= user.email %></h2>
+            <h2><%= user.password %></h2>
+        </section>
+    </main>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+</body>
+</html>

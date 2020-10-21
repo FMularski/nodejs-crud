@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    <main>
+        <section class="jumbotron">
+            <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(product => { %>
+                        <tr>
+                          <th scope="row"><%= product.id %></th>
+                          <td><%= product.name %></td>
+                          <td><%= product.description %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+              </table>
+        </section>
+    </main>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+</body>
+</html>
