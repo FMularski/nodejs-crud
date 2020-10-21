@@ -9,7 +9,6 @@ router.get('/', (request, response) => {
     response.render('users/index', {users: usersInDb});
 })  
 
-
 router.get('/add', (request, response) => {
     response.render('users/new');
 })
@@ -37,14 +36,7 @@ router.post('/', (request, response) => {
 
     database.users.push(newUser);
 
-    response.redirect('/');
-})
-
-router.delete('/:id', (request, response) => {
-    const userInDb = database.users.find(user => user.id == request.params.id);
-    if (!userInDb) return response.status(404).send('Invalid id.');
-
-    response.redirect('/');
+    response.redirect('/users');
 })
 
 function validateUser(user){

@@ -21,7 +21,7 @@
                     <% products.forEach(product => { %>
                         <tr>
                           <th scope="row"><%= product.id %></th>
-                          <td><%= product.name %></td>
+                          <td><a href="/products/<%= product.id %>"><%= product.name %></a></td>
                           <td><%= product.description %></td>
                         </tr>
                     <% }); %>

@@ -6,7 +6,12 @@ const { request } = require('express');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+
 const user = require('./user');
+const apiUser = require('./api-user');
+
+const product = require('./product');
+const apiProduct = require('./api-product');
 
 const port = process.env.PORT || 3000;
 
@@ -23,6 +28,9 @@ console.log(__dirname  + '/public');
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use('/users', user);
+app.use('/api/users', apiUser);
+app.use('/products', product);
+app.use('/api/products', apiProduct);
 
 
 app.listen(port, () => {
