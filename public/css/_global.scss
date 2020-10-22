@@ -4,8 +4,89 @@
   box-sizing: border-box;
 }
 
-$main-color: rgb(200, 255, 248);
+$main-color: rgb(53, 53, 73);
+$secondary-color: linear-gradient(to right, #e66465, #9198e5);
 
 body {
-  background-color: $main-color;
+  background: $secondary-color;
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  background: $secondary-color;
+  color: white;
+  margin: 2rem 0rem;
+}
+
+.nice-btn {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+}
+
+.header-link {
+  background: none;
+  border: none;
+  transition: all 0.3s ease;
+  color: white;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+    font-size: 3rem;
+    padding: 1rem 2rem;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-self: flex-start;
+
+  a {
+    color: white;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: white;
+      text-decoration: none;
+      font-size: 2.4rem;
+      animation: textshake 0.75s infinite;
+    }
+  }
+}
+
+section.jumbotron {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes textshake {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(10deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  75% {
+    transform: rotateZ(-10deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
 }
