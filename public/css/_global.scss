@@ -4,16 +4,20 @@
   box-sizing: border-box;
 }
 
-$main-color: rgb(53, 53, 73);
-$secondary-color: linear-gradient(to right, #e66465, #9198e5);
+$bg-gradient: linear-gradient(to right, #e66465, #9198e5);
+$section-gradient: linear-gradient(
+  rgba(255, 255, 255, 0.3),
+  rgba(0, 0, 0, 0.3),
+  rgba(255, 255, 255, 0.3)
+);
 
 body {
-  background: $secondary-color;
+  background: $bg-gradient;
   font-family: "Montserrat", sans-serif;
 }
 
 header {
-  background: $secondary-color;
+  background: $bg-gradient;
   color: white;
   margin: 2rem 0rem;
 }
@@ -49,6 +53,7 @@ nav {
     color: white;
     font-size: 2rem;
     transition: all 0.3s ease;
+    padding: 0rem 2rem;
 
     &:hover {
       color: white;
@@ -60,8 +65,12 @@ nav {
 }
 
 section.jumbotron {
-  background: rgba(0, 0, 0, 0.3);
+  background: $section-gradient;
   color: white;
+
+  p {
+    text-align: justify;
+  }
 }
 
 footer {
@@ -71,6 +80,8 @@ footer {
   margin: 0;
   width: 100%;
   text-align: center;
+  background: $section-gradient;
+  color: white;
 }
 
 @keyframes textshake {

@@ -6,7 +6,7 @@ const Joi = require('joi');
 const database = require('./database');
 
 router.get('/', (request, response) => {
-    return response.status(200).send(database.products);
+    response.send({products: database.products});
 })
 
 router.get('/:id', (request, response) => {

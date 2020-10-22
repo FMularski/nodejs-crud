@@ -4,18 +4,17 @@ $(document).ready(() =>{
     function openForm(mode){    // form can be opened in create or update mode which basically is class added to it
         $('#dark-panel').addClass('active');
         $('#light-panel').addClass('active');
-        $('#user-form').addClass(mode);
+        $('#product-form').addClass(mode);
     }
 
     function closeForm(){   // remove classes from form to remove its "mode"
         $('#dark-panel').removeClass('active');
         $('#light-panel').removeClass('active');
-        $('#user-form').removeClass('create');
-        $('#user-form').removeClass('update');
+        $('#product-form').removeClass('create');
+        $('#product-form').removeClass('update');
 
-        const loginInput = $('#login').val('');
-        const emailInput = $('#email').val('');
-        const passwordInput = $('#password').val('');
+        $('#name').val('');
+        $('#description').val('');
     }
 
     $('#create-btn').on('click', () =>{
@@ -32,16 +31,15 @@ $(document).ready(() =>{
         tbody.html('');
         
         $.ajax({
-            url: '/api/users',
+            url: '/api/products',
             method: 'GET',
             contentType: 'application/json',
             success: request => {
-                request.users.forEach(user =>{
+                request.products.forEach(product =>{
                     tbody.append('<tr>\
-                                    <th scope="row">' + user.id + '</th>\
-                                    <td>' + user.login + '</td>\
-                                    <td>' + user.email + '</td>\
-                                    <td>' + user.password + '</td>\
+                                    <th scope="row">' + product.id + '</th>\
+                                    <td>' + product.name + '</td>\
+                                    <td>' + product.description + '</td>\
                                     <td><button class="btn btn-danger delete-btn nice-btn">Delete</button></td>\
                                     <td><button class="btn btn-info update-btn nice-btn">Update</button></td>\
                                 </tr>');
@@ -52,22 +50,20 @@ $(document).ready(() =>{
 
     let updateId;   // stores user id of clicked button in order to pass to put
 
-    $("#user-form").on('submit', function(event) {
+    $("#product-form").on('submit', function(event) {
         event.preventDefault();
-        const loginInput = $('#login');
-        const emailInput = $('#email');
-        const passwordInput = $('#password');
+        const nameInput = $('#name');
+        const descriptionInput = $('#description');
 
         /* POST */
-        if ($('#user-form').hasClass('create')){
+        if ($('#product-form').hasClass('create')){
             $.ajax({
-                url: '/api/users',
+                url: '/api/products',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    login: loginInput.val(),
-                    email: emailInput.val(),
-                    password: passwordInput.val()
+                    name: nameInput.val(),
+                    description: descriptionInput.val()
                 }),
                 success: response =>{
                     closeForm();
@@ -76,15 +72,14 @@ $(document).ready(() =>{
             })
         }
         /* PUT */
-        if ($('#user-form').hasClass('update')){
+        if ($('#product-form').hasClass('update')){
             $.ajax({
-                url: '/api/users/' + updateId,
+                url: '/api/products/' + updateId,
                 method: 'PUT',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    login: loginInput.val(),
-                    email: emailInput.val(),
-                    password: passwordInput.val()
+                    name: nameInput.val(),
+                    description: descriptionInput.val()
                 }),
                 success: response => {
                     closeForm();
@@ -99,14 +94,12 @@ $(document).ready(() =>{
     $('table').on('click', '.update-btn', function(){
         const row = $(this).parent().parent();
         updateId = row.children()[0].innerHTML;
-        const login = row.children()[1].innerHTML;
-        const email = row.children()[2].innerHTML;
-        const password = row.children()[3].innerHTML;
+        const name = row.children()[1].innerHTML;
+        const description = row.children()[2].innerHTML;
 
         
-        $('#login').val(login);
-        $('#email').val(email);
-        $('#password').val(password);
+        $('#name').val(name);
+        $('#description').val(description);
 
         openForm('update');
     })
@@ -117,7 +110,7 @@ $(document).ready(() =>{
         const id = row.children()[0].innerHTML;
         
         $.ajax({
-            url: 'api/users/' + id,
+            url: 'api/products/' + id,
             method: 'DELETE',
             contentType: 'application/json',
             success: request => {
