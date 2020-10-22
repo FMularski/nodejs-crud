@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 
-const database = require('./database');
+const database = require('../models/database');
 
 router.get('/', (request, response) => {
     response.send({products: database.products});

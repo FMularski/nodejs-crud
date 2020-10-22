@@ -7,11 +7,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const user = require('./user');
-const apiUser = require('./api-user');
+const user = require('./routers/user');
+const apiUser = require('./routers/api-user');
 
-const product = require('./product');
-const apiProduct = require('./api-product');
+const product = require('./routers/product');
+const apiProduct = require('./routers/api-product');
 
 const port = process.env.PORT || 3000;
 
@@ -30,7 +30,6 @@ app.use('/users', user);
 app.use('/api/users', apiUser);
 app.use('/products', product);
 app.use('/api/products', apiProduct);
-
 
 app.listen(port, () => {
     console.log(`listening at port ${port}`);
